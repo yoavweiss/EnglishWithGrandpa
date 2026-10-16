@@ -1,0 +1,347 @@
+/* ===== גופנים (מוטמעים מקומית — עובדים גם בלי אינטרנט) ===== */
+@font-face { font-family: "Frank Ruhl Libre"; font-weight: 500; font-display: swap; src: url("../fonts/frank-ruhl-libre-hebrew-500-normal.woff2") format("woff2"); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: "Frank Ruhl Libre"; font-weight: 700; font-display: swap; src: url("../fonts/frank-ruhl-libre-hebrew-700-normal.woff2") format("woff2"); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: "Frank Ruhl Libre"; font-weight: 500; font-display: swap; src: url("../fonts/frank-ruhl-libre-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Frank Ruhl Libre"; font-weight: 700; font-display: swap; src: url("../fonts/frank-ruhl-libre-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Assistant"; font-weight: 400; font-display: swap; src: url("../fonts/assistant-hebrew-400-normal.woff2") format("woff2"); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: "Assistant"; font-weight: 600; font-display: swap; src: url("../fonts/assistant-hebrew-600-normal.woff2") format("woff2"); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: "Assistant"; font-weight: 700; font-display: swap; src: url("../fonts/assistant-hebrew-700-normal.woff2") format("woff2"); unicode-range: U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+@font-face { font-family: "Assistant"; font-weight: 400; font-display: swap; src: url("../fonts/assistant-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Assistant"; font-weight: 600; font-display: swap; src: url("../fonts/assistant-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+@font-face { font-family: "Assistant"; font-weight: 700; font-display: swap; src: url("../fonts/assistant-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F; }
+
+/* ===== צבעים ומשתנים ===== */
+:root {
+  --paper: #F6F0E4;
+  --paper-2: #EFE6D4;
+  --card: #FFFCF6;
+  --ink: #2B2620;
+  --ink-soft: #5F564B;
+  --ink-faint: #8A7F71;
+  --line: #E2D6C1;
+  --accent: #1E5A57;        /* ירוק-כחלחל עמוק */
+  --accent-strong: #16433F;
+  --accent-soft: #DCEAE6;
+  --warm: #A9532C;          /* טרקוטה */
+  --warm-soft: #F6E3D6;
+  --gold: #C4943A;
+  --ok: #2F7246;
+  --ok-soft: #E1F0E4;
+  --gentle: #9A6A12;        /* "כמעט" — ענבר רך, לא אדום */
+  --gentle-soft: #FBEFD3;
+  --shadow: 0 1px 0 rgba(43,38,32,.04), 0 6px 18px -8px rgba(43,38,32,.18);
+  --radius: 18px;
+  --serif: "Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --sans: "Assistant", "Segoe UI", "Arial", sans-serif;
+  font-size: 23px;
+}
+:root[data-size="normal"] { font-size: 20px; }
+:root[data-size="large"]  { font-size: 23px; }
+:root[data-size="xlarge"] { font-size: 27px; }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  background-image: radial-gradient(circle at 85% -10%, #FBF4E6 0, transparent 45%);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.55;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.2; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+p { margin: 0; }
+
+.en { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.muted { color: var(--ink-soft); }
+.faint { color: var(--ink-faint); }
+
+/* ===== מבנה ===== */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  max-width: 980px; margin: 0 auto; padding: 1rem 1.25rem .5rem;
+}
+.brand { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--accent-strong); display: flex; align-items: center; gap: .5rem; text-decoration: none; }
+.brand-mark { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--accent); color: var(--paper); display: grid; place-items: center; font-size: .8rem; font-family: var(--serif); }
+.topbar-actions { display: flex; gap: .5rem; }
+main { max-width: 980px; margin: 0 auto; padding: .5rem 1.25rem 3rem; }
+.screen { animation: fade .25s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.screen-head { margin: .75rem 0 1.25rem; display: grid; gap: .3rem; }
+.stack { display: grid; gap: 1rem; }
+
+/* ===== כפתורים ===== */
+button, .btn {
+  font: inherit; cursor: pointer; border: none; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 3.1rem; padding: .55rem 1.3rem; border-radius: 14px;
+  font-weight: 600; font-size: 1rem; line-height: 1.2;
+  transition: background-color .15s, transform .08s, box-shadow .15s, border-color .15s;
+}
+button:active, .btn:active { transform: translateY(1px); }
+:focus-visible { outline: 4px solid var(--gold); outline-offset: 3px; }
+.btn-primary { background: var(--accent); color: #FFFCF6; box-shadow: 0 4px 12px -6px rgba(30,90,87,.6); }
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-secondary { background: var(--card); color: var(--accent-strong); border: 2px solid var(--line); }
+.btn-secondary:hover { border-color: var(--accent); }
+.btn-quiet { background: transparent; color: var(--ink-soft); border: 2px solid transparent; }
+.btn-quiet:hover { background: var(--paper-2); }
+.btn-warm { background: var(--warm); color: #FFFCF6; }
+.btn-big { min-height: 3.8rem; font-size: 1.15rem; padding: .7rem 1.8rem; }
+.btn-wide { width: 100%; }
+.btn svg, button svg { width: 1.3em; height: 1.3em; flex: none; }
+.btn-row { display: flex; flex-wrap: wrap; gap: .75rem; }
+.btn-row.spread { justify-content: space-between; }
+.icon-btn { min-height: 3.1rem; min-width: 3.1rem; padding: .5rem .9rem; }
+button:disabled { opacity: .45; cursor: default; }
+
+/* ===== כרטיסים ===== */
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 1.4rem 1.5rem;
+}
+
+/* ===== מסך ראשי ===== */
+.hello { margin: 1rem 0 1.5rem; }
+.hello h1 { font-size: 2.3rem; color: var(--ink); }
+.hello p { font-size: 1.15rem; color: var(--ink-soft); margin-top: .35rem; }
+
+.continue {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  background: var(--accent); color: #FFFCF6; border-radius: var(--radius); padding: 1.2rem 1.5rem;
+  box-shadow: 0 10px 24px -14px rgba(22,67,63,.8); margin-bottom: 1.5rem;
+}
+.continue .label { font-size: .9rem; opacity: .85; }
+.continue .what { font-family: var(--serif); font-size: 1.45rem; font-weight: 700; }
+.continue .where { font-size: .95rem; opacity: .9; }
+.continue .btn { background: #FFFCF6; color: var(--accent-strong); }
+.continue .btn:hover { background: var(--paper); }
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.tile {
+  position: relative; text-align: start; display: grid; align-content: start; justify-items: start; gap: .5rem;
+  background: var(--card); border: 2px solid var(--line); border-radius: 22px; padding: 1.5rem 1.4rem 1.6rem;
+  min-height: 12rem; color: var(--ink); box-shadow: var(--shadow);
+}
+.tile:hover { border-color: var(--accent); }
+.tile .tile-icon { width: 3.4rem; height: 3.4rem; border-radius: 16px; display: grid; place-items: center; margin-bottom: .4rem; }
+.tile .tile-icon svg { width: 1.9rem; height: 1.9rem; }
+.tile h2 { font-size: 1.75rem; }
+.tile p { color: var(--ink-soft); font-weight: 400; font-size: 1rem; }
+.tile.learn .tile-icon { background: var(--accent-soft); color: var(--accent); }
+.tile.practice .tile-icon { background: var(--warm-soft); color: var(--warm); }
+.tile.speak .tile-icon { background: #EDE6F3; color: #5A4A7A; }
+.badge {
+  position: absolute; top: 1.1rem; left: 1.1rem; background: var(--warm); color: #FFFCF6;
+  border-radius: 999px; padding: .15rem .7rem; font-size: .85rem; font-weight: 700;
+}
+.stats { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; margin-top: 1.5rem; color: var(--ink-soft); font-size: .95rem; }
+.stats strong { color: var(--ink); font-size: 1.1rem; }
+.home-foot { margin-top: 1.5rem; display: flex; justify-content: center; }
+
+/* ===== רשימת שיעורים ===== */
+.level-title { font-family: var(--serif); font-size: 1.15rem; color: var(--ink-soft); margin: 1.5rem 0 .6rem; }
+.lesson-list { display: grid; gap: .75rem; }
+.lesson-row {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem;
+  width: 100%; text-align: start; background: var(--card); color: var(--ink);
+  border: 2px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; min-height: 5rem;
+}
+.lesson-row:hover { border-color: var(--accent); }
+.lesson-row.next { border-color: var(--accent); background: #FBFDFB; }
+.lesson-num {
+  width: 2.8rem; height: 2.8rem; border-radius: 50%; display: grid; place-items: center;
+  background: var(--paper-2); color: var(--ink-soft); font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
+}
+.lesson-row.done .lesson-num { background: var(--ok); color: #fff; }
+.lesson-row.next .lesson-num { background: var(--accent); color: #fff; }
+.lesson-row .t { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; }
+.lesson-row .s { color: var(--ink-soft); font-size: .95rem; font-weight: 400; }
+.status { font-size: .9rem; font-weight: 600; color: var(--ink-faint); white-space: nowrap; }
+.status.done { color: var(--ok); }
+.status.next { color: var(--accent); }
+
+/* ===== כרטיסיית מילה ===== */
+.progress-line { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: .6rem; color: var(--ink-soft); font-size: .95rem; }
+.bar { height: 10px; background: var(--paper-2); border-radius: 999px; overflow: hidden; margin-bottom: 1.2rem; }
+.bar > span { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .3s ease; }
+.word-card { text-align: center; padding: 2rem 1.5rem 1.6rem; }
+.word-en { font-family: var(--serif); font-size: 3.4rem; font-weight: 700; color: var(--accent-strong); line-height: 1.1; direction: ltr; }
+.word-say { color: var(--ink-soft); font-size: 1.05rem; margin-top: .4rem; }
+.word-he { font-size: 2rem; font-weight: 700; margin-top: 1rem; }
+.speak-row { display: flex; justify-content: center; gap: .75rem; margin-top: 1.1rem; flex-wrap: wrap; }
+.divider { height: 1px; background: var(--line); margin: 1.5rem 0 1.2rem; }
+.example { display: grid; gap: .3rem; justify-items: center; }
+.example .ex-en { font-size: 1.35rem; font-weight: 600; direction: ltr; }
+.example .ex-he { color: var(--ink-soft); font-size: 1.1rem; }
+.example .ex-line { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; justify-content: center; }
+.nav-row { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.4rem; }
+.nav-row .btn-primary { flex: 1; max-width: 22rem; }
+
+/* ===== תרגול ===== */
+.practice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.game-card {
+  text-align: start; display: grid; gap: .35rem; align-content: start; justify-items: start;
+  background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: var(--radius);
+  padding: 1.3rem 1.4rem; min-height: 8rem;
+}
+.game-card, .tile { justify-content: stretch; }
+.game-card:hover { border-color: var(--warm); }
+.game-card.featured { grid-column: 1 / -1; border-color: var(--warm); background: linear-gradient(0deg, var(--card), #FFF7EF); }
+.game-card .gt { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; }
+.game-card .gd { color: var(--ink-soft); font-weight: 400; }
+.game-card .gm { color: var(--warm); font-weight: 700; font-size: .95rem; }
+
+.question { text-align: center; padding: 1.8rem 1.4rem; }
+.q-prompt { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: .6rem; }
+.q-main { font-family: var(--serif); font-size: 2.8rem; font-weight: 700; color: var(--accent-strong); line-height: 1.15; }
+.q-main.he { color: var(--ink); }
+.q-sentence { font-size: 1.6rem; font-weight: 600; direction: ltr; line-height: 1.5; }
+.q-sentence .blank { display: inline-block; min-width: 4.5em; border-bottom: 3px solid var(--warm); color: var(--warm); }
+.q-hint { color: var(--ink-soft); margin-top: .6rem; }
+.options { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; margin-top: 1.4rem; }
+.option {
+  background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 16px;
+  min-height: 4.2rem; font-size: 1.3rem; font-weight: 600; padding: .6rem 1rem;
+}
+.option:hover:not(:disabled) { border-color: var(--accent); background: #FBFDFC; }
+.option.correct { border-color: var(--ok); background: var(--ok-soft); color: var(--ok); opacity: 1; }
+.option.gentle { border-color: #E3C27A; background: var(--gentle-soft); color: var(--gentle); opacity: 1; }
+.option:disabled { cursor: default; }
+.option:disabled:not(.correct):not(.gentle) { opacity: .55; }
+
+.feedback {
+  margin-top: 1.2rem; border-radius: 16px; padding: 1rem 1.2rem; display: flex; align-items: center;
+  justify-content: space-between; gap: 1rem; flex-wrap: wrap; text-align: start;
+}
+.feedback.ok { background: var(--ok-soft); color: var(--ok); }
+.feedback.gentle { background: var(--gentle-soft); color: #6E4C0E; }
+.feedback .fb-title { font-weight: 700; font-size: 1.2rem; }
+.feedback .fb-sub { font-size: 1rem; }
+
+.reveal-box { margin-top: 1.2rem; }
+.reveal-box .word-he { margin-top: 0; }
+
+/* תשובות שהן משפטים שלמים */
+.options.single { grid-template-columns: 1fr; }
+.option.sentence-opt { font-size: 1.15rem; min-height: 3.6rem; text-align: center; line-height: 1.4; }
+.q-he-sentence { font-family: var(--sans); font-size: 1.7rem; line-height: 1.4; }
+.game-card.topics { border-color: var(--accent); background: linear-gradient(0deg, var(--card), #F2F8F6); }
+.game-card.topics:hover { border-color: var(--accent-strong); }
+
+/* בניית משפט */
+.build-line {
+  display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; align-items: center;
+  min-height: 4.6rem; margin-top: 1.4rem; padding: .7rem; border: 2px dashed var(--line); border-radius: 16px; background: #FFFEFA;
+  width: 100%;
+}
+.build-line.ok { border-style: solid; border-color: var(--ok); background: var(--ok-soft); }
+.build-line.gentle { border-style: solid; border-color: #E3C27A; background: var(--gentle-soft); }
+.build-hint { font-family: var(--sans); direction: rtl; }
+.token-bank { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-top: 1rem; width: 100%; min-height: 3.2rem; }
+.token {
+  background: var(--card); color: var(--ink); border: 2px solid var(--line); border-radius: 12px;
+  min-height: 3rem; padding: .35rem .9rem; font-size: 1.2rem; font-weight: 600;
+  display: inline-flex; align-items: center;
+}
+.token:hover:not(:disabled) { border-color: var(--accent); }
+.token.placed { background: var(--accent-soft); border-color: #B9D5CF; color: var(--accent-strong); }
+.token.shown { min-height: auto; padding: .2rem .5rem; border: none; background: transparent; }
+
+/* כתיבה */
+.type-input {
+  display: block; margin: 0 auto; width: 100%; max-width: 26rem !important; text-align: center;
+  font-size: 1.6rem !important; font-weight: 600; min-height: 3.8rem !important;
+}
+.type-input.ok { border-color: var(--ok) !important; background: var(--ok-soft); color: var(--ok); }
+.type-input.gentle { border-color: #E3C27A !important; background: var(--gentle-soft); color: var(--gentle); }
+.hint-line { display: block; margin-top: .6rem; min-height: 1.6rem; font-size: 1.3rem; letter-spacing: .12em; color: var(--warm); text-align: center; }
+
+/* התאמת זוגות */
+.match-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.match-col { display: grid; gap: .7rem; }
+.match-item { min-height: 3.8rem; font-size: 1.25rem; }
+.match-item.selected { border-color: var(--accent); background: var(--accent-soft); }
+.match-item.matched { border-color: var(--ok); background: var(--ok-soft); color: var(--ok); opacity: .8; }
+.match-item.nudge { animation: nudge .35s ease; border-color: #E3C27A; background: var(--gentle-soft); }
+@keyframes nudge { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+
+/* סיכום */
+.summary { text-align: center; padding: 2.2rem 1.5rem; display: grid; gap: 1rem; justify-items: center; }
+.summary .seal { width: 5rem; height: 5rem; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+.summary .seal svg { width: 2.6rem; height: 2.6rem; }
+.summary h2 { font-size: 2rem; }
+.summary p { font-size: 1.15rem; color: var(--ink-soft); max-width: 32rem; }
+.word-chips { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; }
+.chip { background: var(--paper-2); border-radius: 999px; padding: .3rem .9rem; font-size: .95rem; }
+.chip.again { background: var(--gentle-soft); color: #6E4C0E; }
+
+/* ===== שיחה ===== */
+.chat { display: grid; gap: .9rem; margin-bottom: 1.2rem; }
+.bubble { max-width: 85%; border-radius: 20px; padding: .9rem 1.2rem; box-shadow: var(--shadow); }
+.bubble .b-en { font-size: 1.3rem; font-weight: 600; direction: ltr; text-align: left; }
+.bubble .b-he { color: var(--ink-soft); font-size: 1rem; margin-top: .2rem; }
+.bubble .b-head { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .2rem; font-size: .85rem; color: var(--ink-faint); }
+.bubble.app { justify-self: end; background: var(--card); border: 1px solid var(--line); border-end-end-radius: 6px; }
+.bubble.you { justify-self: start; background: var(--accent-soft); border: 1px solid #C5DCD6; border-end-start-radius: 6px; }
+.mini-speak { min-height: 2.4rem; min-width: 2.4rem; padding: .3rem .6rem; border-radius: 10px; background: transparent; color: var(--accent); border: 2px solid var(--line); }
+.mini-speak:hover { border-color: var(--accent); }
+.your-turn { border: 2px solid var(--accent); }
+.your-turn .yt-label { color: var(--accent); font-weight: 700; margin-bottom: .4rem; }
+.your-turn .yt-en { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; direction: ltr; text-align: left; line-height: 1.3; }
+.your-turn .yt-he { color: var(--ink-soft); font-size: 1.1rem; margin: .3rem 0 1rem; }
+.heard { margin-top: 1rem; }
+.listening { display: inline-flex; align-items: center; gap: .6rem; color: var(--warm); font-weight: 700; }
+.dot { width: .8rem; height: .8rem; border-radius: 50%; background: var(--warm); animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+
+/* ===== הגדרות ===== */
+.setting { display: grid; gap: .6rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+.setting:last-child { border-bottom: none; }
+.setting label, .setting .lbl { font-weight: 700; font-size: 1.1rem; }
+.setting .help { color: var(--ink-soft); font-size: .95rem; }
+.seg { display: flex; flex-wrap: wrap; gap: .5rem; }
+.seg button { background: var(--card); border: 2px solid var(--line); color: var(--ink); }
+.seg button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent-strong); }
+input[type="text"], select {
+  font: inherit; font-size: 1.1rem; padding: .7rem 1rem; min-height: 3.1rem; border-radius: 12px;
+  border: 2px solid var(--line); background: #fff; color: var(--ink); width: 100%; max-width: 28rem;
+}
+input[type="text"]:focus, select:focus { border-color: var(--accent); outline: none; }
+.toggle { display: flex; align-items: center; gap: .8rem; cursor: pointer; font-weight: 600; }
+.toggle input { width: 1.6rem; height: 1.6rem; accent-color: var(--accent); }
+
+.notice { background: var(--gentle-soft); color: #6E4C0E; border-radius: 14px; padding: .9rem 1.1rem; }
+.toast {
+  position: fixed; bottom: 1.5rem; inset-inline: 0; margin: 0 auto; width: max-content; max-width: 90vw;
+  background: var(--ink); color: var(--paper); padding: .8rem 1.4rem; border-radius: 14px; font-weight: 600;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); z-index: 10;
+}
+
+/* ===== מסכים צרים ===== */
+@media (max-width: 760px) {
+  .tiles, .practice-grid { grid-template-columns: 1fr; }
+  .tile { min-height: auto; }
+  .word-en { font-size: 2.7rem; }
+  .options { grid-template-columns: 1fr; }
+  .hello h1 { font-size: 1.9rem; }
+  .bubble { max-width: 95%; }
+  .nav-row { gap: .6rem; }
+  .nav-row .btn { flex: 1 1 0; min-width: 0; padding-inline: .7rem; }
+  .nav-row .btn-secondary { flex: 0 1 auto; }
+  .btn-big { padding-inline: 1.1rem; }
+  .match-item { font-size: 1.05rem; padding-inline: .5rem; }
+  main, .topbar { padding-inline: 1rem; }
+  .lesson-row { gap: .7rem; padding-inline: .9rem; }
+  .status { white-space: normal; font-size: .8rem; text-align: center; max-width: 5rem; }
+  .brand { font-size: 1rem; }
+  #homeBtn span { display: none; }
+  .card { padding-inline: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
