@@ -25,6 +25,7 @@
     back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
     next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
     home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 9.5V20h12V9.5"/></svg>',
+    pen: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg>',
     leaf: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14-1 9-6 14-14 14Z"/><path d="M5 19 13 11"/></svg>'
   };
   const icon = (n) => ICONS[n] || "";
@@ -129,6 +130,11 @@
           <h2>מדברים</h2>
           <p>שיחות קצרות מהחיים — שומעים ואומרים בקול</p>
         </button>
+        <button class="tile write" data-act="write">
+          <span class="tile-icon">${icon("pen")}</span>
+          <h2>כותבים</h2>
+          <p>כותבים משפטים באנגלית. מילה בעברית? נתרגם אותה</p>
+        </button>
       </div>
       ${st.known > 0 ? `<div class="stats">
         <span>מילים שלמדת: <strong>${st.known}</strong></span>
@@ -142,12 +148,13 @@
       learn: () => go("#/learn"),
       practice: () => go("#/practice"),
       speak: () => go("#/speak"),
+      write: () => go("#/write"),
       settings: () => go("#/settings")
     });
   }
 
   /* ---------- רשימת שיעורים ---------- */
-  const LEVEL_NAMES = { 1: "שלב א׳ · חוזרים לכושר", 2: "שלב ב׳ · שיחות מהחיים", 3: "שלב ג׳ · להביע את עצמך" };
+  const LEVEL_NAMES = { 1: "שלב א׳ · חוזרים לכושר", 2: "שלב ב׳ · שיחות מהחיים", 3: "שלב ג׳ · להביע את עצמך", 4: "שלב ד׳ · אנגלית מתקדמת", 5: "שלב ה׳ · דיוק וניסוח" };
 
   function learnScreen() {
     const nid = nextLessonId();
@@ -271,7 +278,7 @@
   const GENTLE = ["לא נורא.", "זה בסדר — ככה לומדים.", "לא נורא, זה חלק מהלמידה."];
   const pick = (a) => a[Math.floor(Math.random() * a.length)];
   // סוגי שאלות שבהם מילה שטעו בה חוזרת באותו סוג (ולא כשאלת "מה הפירוש")
-  const SAME_TYPE_RETRY = ["builder", "typing", "translate", "listenSentence"];
+  const SAME_TYPE_RETRY = ["builder", "typing", "translate", "listenSentence", "write"];
   // השוואה סלחנית: בלי אותיות גדולות, סימני פיסוק וגרשים
   const norm = (s) => String(s).toLowerCase().replace(/[’‘`']/g, "").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
   function editDistance(a, b) {
@@ -284,12 +291,12 @@
   }
 
   function distractors(word, n, field, pool) {
-    const same = LESSONS[word.lessonIndex].words.map((w) => w.id);
+    const same = word.lessonIndex >= 0 ? LESSONS[word.lessonIndex].words.map((w) => w.id) : [];
     const order = SRS.shuffle(pool || []).concat(SRS.shuffle(same), SRS.shuffle(Object.keys(SRS.wordIndex)));
     const out = [], seenText = new Set([word[field]]);
     for (const id of order) {
       const w = W(id);
-      if (!w || seenText.has(w[field])) continue;
+      if (!w || !w[field] || seenText.has(w[field])) continue;
       seenText.add(w[field]);
       out.push(id);
       if (out.length >= n) break;
@@ -422,7 +429,7 @@
         <article class="card question">
           <div class="q-prompt">כתבו באנגלית:</div>
           <div class="q-main he">${esc(w.he)}</div>
-          <div class="q-hint" style="margin-bottom:1rem">${esc(w.exHe)}</div>
+          <div class="q-hint" style="margin-bottom:1rem">${esc(w.exHe || "")}</div>
           <input type="text" id="typeIn" class="type-input" dir="ltr" lang="en" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="התשובה באנגלית" data-autofocus>
           <div class="hint-line en" id="hintLine" aria-live="polite"></div>
           <div class="btn-row" style="justify-content:center;margin-top:1rem" id="tctl">
@@ -466,10 +473,135 @@
       }
     }
 
+    /* ---- כתיבת משפט שלם: משפט בעברית → כותבים באנגלית ---- */
+    function showWrite(w) {
+      const tokens = w.ex.split(/\s+/).filter(Boolean);
+      let hints = 0, usedHelp = false, finished = false;
+      render(`
+        ${header()}
+        <article class="card question write-q">
+          <div class="q-prompt">כתבו את המשפט באנגלית:</div>
+          <div class="q-main he q-he-sentence">${esc(w.exHe)}</div>
+          <div class="key-phrase">ביטוי מפתח: <span class="en"><b>${esc(w.en)}</b></span> · ${esc(w.he)} ${sayBtn(w.en, "", { mini: true })}</div>
+          <textarea id="writeIn" class="write-input" dir="ltr" lang="en" spellcheck="true" rows="3" aria-label="המשפט שלך באנגלית" data-autofocus></textarea>
+          <div class="he-help" id="heHelp" hidden aria-live="polite"></div>
+          <div id="hintArea" class="hint-area"></div>
+          <div class="btn-row" style="justify-content:center;margin-top:1rem" id="wctl">
+            <button class="btn btn-primary btn-big" data-act="check">${icon("check")} בדיקה</button>
+            <button class="btn btn-secondary" data-act="hint" id="hintBtn">רמז</button>
+            <button class="btn btn-quiet" data-act="giveup">הראה לי</button>
+          </div>
+          <p class="faint small write-tip" id="wtip">לא יודעים מילה? כתבו אותה בעברית ונתרגם. מילה עם קו אדום — כנראה שגיאת כתיב.</p>
+          <div id="fb"></div>
+        </article>
+        ${quitRow}
+      `, {
+        check: () => check(),
+        hint: () => giveHint(),
+        word: (t) => { usedHelp = true; Writing.insertAtCursor(inp, t); },
+        giveup: () => reveal(),
+        heReplace: () => helper.replace(),
+        mine: () => finishWith(true),
+        again: () => finishWith(false),
+        cont: nextItem,
+        quit: quitAct
+      });
+      const inp = document.getElementById("writeIn");
+      const helper = Writing.hebrewHelper(inp, document.getElementById("heHelp"));
+      inp.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); if (!finished) check(); } });
+
+      function giveHint() {
+        hints++; usedHelp = true;
+        const area = document.getElementById("hintArea");
+        if (hints === 1) {
+          area.innerHTML = `<div class="lbl-small">המילים של המשפט (לחיצה מוסיפה אותן):</div>
+            <div class="chip-group en">${SRS.shuffle(tokens).map((t) => `<button class="chip-btn" data-act="word" data-arg="${esc(t)}">${esc(t)}</button>`).join("")}</div>`;
+        } else if (hints === 2) {
+          area.insertAdjacentHTML("beforeend", `<div class="lbl-small" style="margin-top:.6rem">האות הראשונה של כל מילה, לפי הסדר:</div>
+            <div class="hint-line en">${tokens.map((t) => esc(t[0]) + "·".repeat(Math.max(0, t.replace(/[^A-Za-z']/g, "").length - 1))).join("  ")}</div>`);
+        } else {
+          area.insertAdjacentHTML("beforeend", `<div style="margin-top:.6rem">${sayBtn(w.ex, "להקשיב למשפט", { slow: true })}</div>`);
+          document.getElementById("hintBtn").disabled = true;
+        }
+        inp.focus();
+      }
+
+      async function check() {
+        const text = inp.value.trim();
+        if (!text) { inp.focus(); return; }
+        if (Translate.hasHebrew(text)) {
+          await helper.run(true);
+          toast("יש במשפט מילים בעברית — אפשר להחליף אותן באנגלית בלחיצה.");
+          return;
+        }
+        if (helper.state.used) usedHelp = true;
+        const c = Writing.compare(text, w.ex);
+        finished = true;
+        inp.disabled = true;
+        document.getElementById("wctl").hidden = true;
+        document.getElementById("wtip").hidden = true;
+        document.getElementById("hintArea").innerHTML = "";
+        const marks = (list) => list.map((t) => `<span class="tk tk-${t.status}">${esc(t.text)}</span>`).join(" ");
+        if (c.exact) {
+          inp.classList.add("ok");
+          record(w.id, !usedHelp);
+          const typoNote = c.typos.length
+            ? `<div class="fb-sub">שימו לב לאיות: ${c.typos.map(([a, b]) => `<span class="en"><s>${esc(a)}</s> → <b>${esc(b)}</b></span>`).join(", ")}</div>` : "";
+          document.getElementById("fb").innerHTML = `
+            <div class="feedback ok" role="status"><div>
+              <div class="fb-title">${usedHelp ? "נכון! כתבת את זה בעזרת רמז — נחזור על המשפט שוב בהמשך." : pick(PRAISE)}</div>
+              <div class="fb-sub"><span class="en">${esc(w.ex)}</span></div>${typoNote}
+            </div><button class="btn btn-primary" data-act="cont" id="contBtn">המשך ${icon("next")}</button></div>`;
+          document.getElementById("contBtn").focus();
+          if (Speech.supported) Speech.speak(w.ex);
+          return;
+        }
+        const close = c.recall >= 0.7 && c.precision >= 0.6;
+        document.getElementById("fb").innerHTML = `
+          <div class="compare" role="status">
+            <div class="fb-title">${close ? "קרוב מאוד! הנה ההבדלים:" : "בואו נשווה:"}</div>
+            <div class="cmp-row"><span class="cmp-lbl">כתבת:</span><span class="en cmp-text">${marks(c.answer)}</span></div>
+            <div class="cmp-row"><span class="cmp-lbl">תשובה אפשרית:</span><span class="en cmp-text">${marks(c.target)} ${sayBtn(w.ex, "", { mini: true })}</span></div>
+            <div class="cmp-legend"><span class="tk tk-extra">צהוב</span> — מילה שונה או מיותרת · <span class="tk tk-missing">ירוק</span> — מילה שחסרה · <span class="tk tk-typo">קו</span> — שגיאת כתיב קטנה</div>
+            <div class="cmp-back" id="backTr"></div>
+            <p class="cmp-q">אפשר לומר דבר אחד בכמה דרכים. אם המשפט שלך אומר את אותו הדבר — הוא נכון.</p>
+            <div class="btn-row">
+              <button class="btn btn-primary" data-act="mine" id="mineBtn">${icon("check")} התכוונתי לאותו דבר</button>
+              <button class="btn btn-secondary" data-act="again">נחזור על זה בהמשך</button>
+            </div>
+          </div>`;
+        document.getElementById("mineBtn").focus();
+        if (Speech.supported) Speech.speak(w.ex);
+        // תרגום חוזר של המשפט שלו לעברית — כדי לראות אם המשמעות נכונה
+        Translate.translate(text, "en", "he").then((r) => {
+          const el = document.getElementById("backTr");
+          if (el) el.innerHTML = `<span class="cmp-lbl">כך המשפט שלך נשמע בעברית:</span> <span>${esc(r.text)}</span>`;
+        }).catch(() => {});
+      }
+
+      function finishWith(ok) {
+        record(w.id, ok && !usedHelp);
+        nextItem();
+      }
+
+      function reveal() {
+        finished = true;
+        inp.disabled = true;
+        document.getElementById("wctl").hidden = true;
+        document.getElementById("wtip").hidden = true;
+        record(w.id, false);
+        document.getElementById("fb").innerHTML = feedbackHtml(false, w, true);
+        document.getElementById("contBtn").focus();
+        if (Speech.supported) Speech.speak(w.ex);
+      }
+    }
+
     function show() {
       const it = items[idx];
       const w = W(it.wordId);
       let type = it.type;
+      if (w.custom && ["sentence", "translate", "listenSentence", "builder"].includes(type)) type = "meaning";
+      if (w.custom && type === "write") type = "typing";
       if (type === "sentence" && !blankSentence(w)) type = "meaning";
       if (type === "listen" && !Speech.supported) type = "meaning";
 
@@ -479,6 +611,7 @@
       if (type === "flash") return showFlash(w);
       if (type === "builder") return showBuilder(w);
       if (type === "typing") return showTyping(w);
+      if (type === "write") return showWrite(w);
 
       // שדה התשובה והשאלה לפי סוג
       const field = { meaning: "he", translate: "ex", listenSentence: "exHe" }[type] || "en";
@@ -556,7 +689,7 @@
         reveal: () => {
           document.getElementById("reveal").innerHTML = `
             <div class="word-he">${esc(w.he)}</div>
-            <div class="example" style="margin-top:.8rem"><div class="ex-line"><span class="ex-en">${esc(w.ex)}</span>${sayBtn(w.ex, "", { mini: true })}</div><div class="ex-he">${esc(w.exHe)}</div></div>
+            ${w.ex ? `<div class="example" style="margin-top:.8rem"><div class="ex-line"><span class="ex-en">${esc(w.ex)}</span>${sayBtn(w.ex, "", { mini: true })}</div><div class="ex-he">${esc(w.exHe)}</div></div>` : ""}
             <p class="muted" style="margin-top:1.2rem">ידעת?</p>
             <div class="btn-row" style="justify-content:center;margin-top:.6rem">
               <button class="btn btn-primary btn-big" data-act="knew" id="knewBtn">${icon("check")} ידעתי</button>
@@ -586,13 +719,13 @@
         ${sum.again.length ? `<div class="word-chips">${sum.again.map((id) => `<span class="chip again"><span class="en">${esc(W(id).en)}</span> · ${esc(W(id).he)}</span>`).join("")}</div>` : ""}
         <div class="btn-row" style="justify-content:center;margin-top:.5rem">
           <button class="btn btn-primary btn-big" data-act="again" data-autofocus>עוד סיבוב</button>
-          <button class="btn btn-secondary btn-big" data-act="menu">לתפריט התרגול</button>
+          <button class="btn btn-secondary btn-big" data-act="menu">${cfg.menu === "#/write" ? "למסך הכתיבה" : "לתפריט התרגול"}</button>
           <button class="btn btn-quiet btn-big" data-act="home">${icon("home")} למסך הראשי</button>
         </div>
       </section>
     `, {
       again: () => { if (cfg.restart) cfg.restart(); },
-      menu: () => go("#/practice"),
+      menu: () => go(cfg.menu || "#/practice"),
       home: () => go("#/")
     });
   }
@@ -651,8 +784,10 @@
       <h2 class="level-title">מילים וביטויים</h2>
       <div class="practice-grid">${card("meaning")}${card("listen")}${card("typing")}${card("match")}</div>
       <h2 class="level-title">משפטים שלמים</h2>
-      <div class="practice-grid">${card("sentence")}${card("translate")}${card("listenSentence")}${card("builder")}</div>
-    `, { play: (k) => go("#/game/" + k), topics: () => go("#/topics") });
+      <div class="practice-grid">${card("sentence")}${card("translate")}${card("listenSentence")}${card("builder")}
+        <button class="game-card featured topics" data-act="write"><span class="gt">כתיבת משפטים באנגלית</span><span class="gd">כותבים משפט שלם, עם רמזים ועזרה בתרגום — במסך "כותבים"</span></button>
+      </div>
+    `, { play: (k) => go("#/game/" + k), topics: () => go("#/topics"), write: () => go("#/write") });
   }
 
   function gameScreen(key) {
@@ -685,10 +820,25 @@
         </button>`;
     });
     html += `</div>`;
+    const mine = S().custom || [];
+    if (mine.length) {
+      html += `<h2 class="level-title">שלי</h2><div class="lesson-list">
+        <button class="lesson-row" data-act="open" data-arg="mine">
+          <span class="lesson-num">★</span>
+          <span><span class="t">המילים שלי</span><br><span class="s">ביטויים ששמרת מהמתרגם</span></span>
+          <span class="status">${mine.length} ביטויים</span>
+        </button></div>`;
+    }
     render(html, { open: (id) => go("#/topic/" + id) });
   }
 
   function topicGame(id) {
+    if (id === "mine") {
+      const ids = (S().custom || []).map((c) => c.id);
+      if (!ids.length) return go("#/topics");
+      const start = () => runSession({ title: "המילים שלי", items: buildItems(ids, ["flash", "meaning", "reverse", "listen", "typing"], true), pool: ids, restart: start });
+      return start();
+    }
     const L = LESSONS[lessonIndex(id)];
     if (!L) return go("#/topics");
     const ids = L.words.map((w) => w.id);
@@ -974,7 +1124,7 @@
       import: () => document.getElementById("importFile").click(),
       reset: () => {
         if (confirm("למחוק את כל ההתקדמות? אי אפשר לבטל את הפעולה.")) {
-          Store.reset(); applySettings(); toast("ההתקדמות נמחקה."); go("#/");
+          Store.reset(); SRS.registerCustom(); applySettings(); toast("ההתקדמות נמחקה."); go("#/");
         }
       }
     });
@@ -988,7 +1138,7 @@
       const f = e.target.files[0];
       if (!f) return;
       f.text().then((txt) => {
-        try { Store.importJSON(txt); applySettings(); toast("ההתקדמות נטענה בהצלחה."); go("#/"); }
+        try { Store.importJSON(txt); SRS.registerCustom(); applySettings(); toast("ההתקדמות נטענה בהצלחה."); go("#/"); }
         catch (err) { toast("הקובץ הזה לא נראה כמו קובץ גיבוי של האפליקציה."); }
       });
     });
@@ -1009,6 +1159,14 @@
       case "game": return gameScreen(arg);
       case "topics": return topicsScreen();
       case "topic": return topicGame(arg);
+      case "write":
+        if (arg === "guided") return Writing.screens.guided();
+        if (arg === "topics") return Writing.screens.topics();
+        if (arg === "topic") return Writing.screens.guided(parts[2]);
+        if (arg === "free") return parts[2] ? Writing.screens.freeEditor(parts[2]) : Writing.screens.freeList();
+        return Writing.screens.hub();
+      case "journal": return Writing.screens.journal();
+      case "translate": return Writing.screens.translator();
       case "speak": return speakScreen();
       case "dialogue": return dialogueScreen(arg);
       case "settings": return settingsScreen();
@@ -1035,6 +1193,12 @@
   if (window.speechSynthesis && window.speechSynthesis.addEventListener) {
     window.speechSynthesis.addEventListener("voiceschanged", () => { if (location.hash === "#/settings") settingsScreen(); });
   }
+
+  // כלים למודול הכתיבה (writing.js)
+  Writing.setup({
+    render, esc, icon, sayBtn, go, toast, S, runSession, practicePool, LEVEL_NAMES,
+    writeLen: () => Math.max(4, Math.round((S().settings.sessionLength || 10) / 2))
+  });
 
   window.addEventListener("hashchange", route);
   applySettings();

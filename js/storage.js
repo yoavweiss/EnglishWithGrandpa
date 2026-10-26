@@ -22,6 +22,10 @@
       words: {},               // wordId -> מצב החזרות (ראו srs.js)
       last: null,              // { lessonId, pos } — השיעור האחרון
       dialogues: {},           // dialogueId -> { done: bool }
+      custom: [],              // "המילים שלי": [{ id, en, he, added }]
+      journal: [],             // המחברת: [{ id, promptId, title, text, date }]
+      drafts: {},              // טיוטות של כתיבה חופשית: promptId -> טקסט
+      translations: [],        // תרגומים אחרונים: [{ from, to, src, out }]
       days: []                 // תאריכים שבהם תרגלו (YYYY-MM-DD)
     };
   }

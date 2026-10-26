@@ -1,5 +1,5 @@
 /*
- * תוכן השיעורים והשיחות — רמה בינונית ומעלה (B1–B2), למי שכבר מכיר את המילים הבסיסיות.
+ * תוכן השיעורים והשיחות — רמה בינונית עד מתקדמת (B1–C1), למי שכבר מכיר את המילים הבסיסיות.
  * כדי להוסיף שיעור: מוסיפים אובייקט חדש למערך LESSONS באותו מבנה.
  * לכל פריט: id ייחודי, en (אנגלית — בלי סימן שאלה/נקודה בסוף), he (עברית),
  * say (הגייה באותיות עבריות), ex (משפט דוגמה שמכיל את en בדיוק), exHe (תרגום המשפט).
@@ -411,6 +411,330 @@ window.LESSONS = [
       { id: "as-soon-as", en: "As soon as", he: "ברגע ש-", say: "אֶז סוּן אֶז", ex: "Call me as soon as you arrive.", exHe: "תתקשר אליי ברגע שאתה מגיע." },
       { id: "it-turned-out", en: "It turned out", he: "התברר ש-", say: "אִיט טֶרנְד אַאוּט", ex: "It turned out that he was right.", exHe: "התברר שהוא צדק." }
     ]
+  },
+
+  /* ---------- שלב ד׳ · אנגלית מתקדמת (B2) ---------- */
+  {
+    id: "phrasal-4",
+    title: "פעלים עם מילת יחס (ד)",
+    subtitle: "צירופים מתקדמים",
+    level: 4,
+    words: [
+      { id: "come-up-with", en: "Come up with", he: "להמציא, להעלות (רעיון)", say: "קָאם אָפּ וִוית'", ex: "We need to come up with a better plan.", exHe: "אנחנו צריכים להמציא תוכנית טובה יותר." },
+      { id: "put-up-with", en: "Put up with", he: "לסבול, להשלים עם", say: "פּוּט אָפּ וִוית'", ex: "I can't put up with this noise any longer.", exHe: "אני לא יכול לסבול את הרעש הזה יותר." },
+      { id: "look-into", en: "Look into", he: "לבדוק, לחקור (עניין)", say: "לוּק אִינטוּ", ex: "The manager promised to look into the problem.", exHe: "המנהל הבטיח לבדוק את הבעיה." },
+      { id: "run-into", en: "Run into", he: "להיתקל ב- (במקרה)", say: "רָאן אִינטוּ", ex: "I didn't expect to run into an old friend at the market.", exHe: "לא ציפיתי להיתקל בחבר ותיק בשוק." },
+      { id: "fall-through", en: "Fall through", he: "להתבטל, לא לצאת לפועל", say: "פוֹל ת'רוּ", ex: "Our plans for the trip may fall through.", exHe: "התוכניות שלנו לטיול עלולות להתבטל." },
+      { id: "live-up-to", en: "Live up to", he: "לעמוד בציפיות", say: "לִיב אָפּ טוּ", ex: "The hotel didn't live up to our expectations.", exHe: "המלון לא עמד בציפיות שלנו." },
+      { id: "get-away-with", en: "Get away with", he: "לצאת פטור (בלי עונש)", say: "גֶט אֶוֵויי וִוית'", ex: "He thought he could get away with it.", exHe: "הוא חשב שיצליח לצאת מזה בלי עונש." },
+      { id: "cut-down-on", en: "Cut down on", he: "לצמצם, להפחית", say: "קָאט דַאוּן אוֹן", ex: "The doctor told me to cut down on salt.", exHe: "הרופא אמר לי להפחית במלח." }
+    ]
+  },
+  {
+    id: "structures",
+    title: "מבנים מתקדמים",
+    subtitle: "ביטויים שמשדרגים כל משפט",
+    level: 4,
+    words: [
+      { id: "if-i-were-you", en: "If I were you", he: "אם הייתי במקומך", say: "אִיף אַיי וֶור יוּ", ex: "If I were you, I would take the train.", exHe: "אם הייתי במקומך, הייתי נוסע ברכבת." },
+      { id: "had-better", en: "Had better", he: "כדאי מאוד ש- (אחרת...)", say: "הֶד בֶּטֶר", ex: "We had better leave now, or we'll miss the bus.", exHe: "כדאי שנצא עכשיו, אחרת נפספס את האוטובוס." },
+      { id: "supposed-to", en: "Supposed to", he: "אמור ל-", say: "סֶפּוֹאוּזְד טוּ", ex: "The train was supposed to arrive at noon.", exHe: "הרכבת הייתה אמורה להגיע בצהריים." },
+      { id: "might-as-well", en: "Might as well", he: "אפשר באותה מידה, כבר עדיף", say: "מַייט אֶז וֶול", ex: "It's raining, so we might as well stay at home.", exHe: "יורד גשם, אז כבר עדיף שנישאר בבית." },
+      { id: "no-matter-how", en: "No matter how", he: "לא משנה כמה / איך", say: "נוֹאוּ מֶטֶר הַאוּ", ex: "No matter how hard I try, I can't remember his name.", exHe: "לא משנה כמה אני מתאמץ, אני לא מצליח לזכור את השם שלו." },
+      { id: "used-to-doing", en: "Used to doing", he: "רגיל ל- (לעשות משהו)", say: "יוּזְד טוּ דוּאִינג", ex: "I'm not used to doing everything on the computer.", exHe: "אני לא רגיל לעשות הכול במחשב." },
+      { id: "the-more-the-better", en: "The more, the better", he: "כמה שיותר, יותר טוב", say: "דֶ'ה מוֹר, דֶ'ה בֶּטֶר", ex: "Invite the whole family. The more, the better!", exHe: "תזמין את כל המשפחה. כמה שיותר, יותר טוב!" },
+      { id: "as-long-as", en: "As long as", he: "כל עוד, בתנאי ש-", say: "אֶז לוֹנג אֶז", ex: "You can borrow my car as long as you drive carefully.", exHe: "אתה יכול לשאול את המכונית שלי, כל עוד אתה נוהג בזהירות." }
+    ]
+  },
+  {
+    id: "collocations",
+    title: "צירופים קבועים",
+    subtitle: "מילים שתמיד באות ביחד",
+    level: 4,
+    words: [
+      { id: "take-advantage-of", en: "Take advantage of", he: "לנצל (הזדמנות)", say: "טֵייק אֶדוַונטֶג' אוֹב", ex: "Let's take advantage of the good weather.", exHe: "בוא ננצל את מזג האוויר הטוב." },
+      { id: "pay-attention-to", en: "Pay attention to", he: "לשים לב ל-", say: "פֵּיי אֶטֶנשֶן טוּ", ex: "Please pay attention to the signs.", exHe: "בבקשה שים לב לשלטים." },
+      { id: "take-into-account", en: "Take into account", he: "לקחת בחשבון", say: "טֵייק אִינטוּ אֶקַאוּנט", ex: "You should take into account the cost of the hotel.", exHe: "כדאי לך לקחת בחשבון את מחיר המלון." },
+      { id: "keep-an-eye-on", en: "Keep an eye on", he: "לפקוח עין על, להשגיח", say: "קִיפּ אֶן אַיי אוֹן", ex: "Could you keep an eye on my bag for a minute?", exHe: "תוכל להשגיח על התיק שלי לדקה?" },
+      { id: "make-up-your-mind", en: "Make up your mind", he: "להחליט סופית", say: "מֵייק אָפּ יוֹר מַיינד", ex: "You have to make up your mind by Friday.", exHe: "אתה חייב להחליט עד יום שישי." },
+      { id: "come-to-terms-with", en: "Come to terms with", he: "להשלים עם", say: "קָאם טוּ טֶרמְז וִוית'", ex: "It took time to come to terms with the change.", exHe: "לקח זמן להשלים עם השינוי." },
+      { id: "lose-track-of", en: "Lose track of", he: "לאבד מעקב אחרי", say: "לוּז טְרֶק אוֹב", ex: "I always lose track of time when I read.", exHe: "אני תמיד מאבד תחושת זמן כשאני קורא." },
+      { id: "take-part-in", en: "Take part in", he: "להשתתף ב-", say: "טֵייק פָּארט אִין", ex: "Many people take part in the yearly march.", exHe: "הרבה אנשים משתתפים בצעדה השנתית." }
+    ]
+  },
+  {
+    id: "health-lifestyle",
+    title: "בריאות ואורח חיים",
+    subtitle: "לשמור על עצמנו",
+    level: 4,
+    words: [
+      { id: "check-up", en: "Check-up", he: "בדיקה תקופתית", say: "צֶ'ק־אָפּ", ex: "I have my yearly check-up next week.", exHe: "יש לי בדיקה שנתית בשבוע הבא." },
+      { id: "work-out", en: "Work out", he: "להתאמן (כושר)", say: "וֶורק אַאוּט", ex: "I try to work out three times a week.", exHe: "אני משתדל להתאמן שלוש פעמים בשבוע." },
+      { id: "balanced-diet", en: "Balanced diet", he: "תזונה מאוזנת", say: "בֶּלֶנסְט דַייאֶט", ex: "A balanced diet is important at any age.", exHe: "תזונה מאוזנת חשובה בכל גיל." },
+      { id: "fresh-air", en: "Fresh air", he: "אוויר צח", say: "פְרֶש אֶר", ex: "Let's go out and get some fresh air.", exHe: "בוא נצא לנשום קצת אוויר צח." },
+      { id: "stay-hydrated", en: "Stay hydrated", he: "לשתות מספיק מים", say: "סְטֵיי הַיידְרֵייטֶד", ex: "In the summer, it's important to stay hydrated.", exHe: "בקיץ חשוב לשתות מספיק מים." },
+      { id: "physiotherapy", en: "Physiotherapy", he: "פיזיותרפיה", say: "פִיזִיוֹת'ֶרֶפִּי", ex: "Physiotherapy helped my back a lot.", exHe: "הפיזיותרפיה עזרה לגב שלי מאוד." },
+      { id: "get-some-rest", en: "Get some rest", he: "לנוח קצת", say: "גֶט סָאם רֶסט", ex: "You look tired. Go and get some rest.", exHe: "אתה נראה עייף. לך לנוח קצת." },
+      { id: "in-good-shape", en: "In good shape", he: "בכושר טוב", say: "אִין גוּד שֵייפּ", ex: "For his age, he is in good shape.", exHe: "ביחס לגילו, הוא בכושר טוב." }
+    ]
+  },
+  {
+    id: "money-advanced",
+    title: "כסף וכלכלה",
+    subtitle: "פנסיה, חסכונות ותקציב",
+    level: 4,
+    words: [
+      { id: "pension", en: "Pension", he: "פנסיה, קצבה", say: "פֶּנשֶן", ex: "My pension arrives at the beginning of the month.", exHe: "הפנסיה שלי מגיעה בתחילת החודש." },
+      { id: "savings", en: "Savings", he: "חסכונות", say: "סֵייבִינגְז", ex: "We used our savings to help the children.", exHe: "השתמשנו בחסכונות שלנו כדי לעזור לילדים." },
+      { id: "interest-rate", en: "Interest rate", he: "שיעור ריבית", say: "אִינטְרֶסט רֵייט", ex: "The bank raised the interest rate again.", exHe: "הבנק העלה שוב את הריבית." },
+      { id: "budget", en: "Budget", he: "תקציב", say: "בָּאג'ֶט", ex: "We have a budget for the holiday.", exHe: "יש לנו תקציב לחופשה." },
+      { id: "inflation", en: "Inflation", he: "אינפלציה", say: "אִינפְלֵיישֶן", ex: "Inflation makes everything more expensive.", exHe: "האינפלציה מייקרת את הכול." },
+      { id: "invest", en: "Invest", he: "להשקיע", say: "אִינוֶוסט", ex: "My son wants to invest in a small business.", exHe: "הבן שלי רוצה להשקיע בעסק קטן." },
+      { id: "retire", en: "Retire", he: "לפרוש (לגמלאות)", say: "רִיטַאייר", ex: "I decided to retire at sixty-seven.", exHe: "החלטתי לפרוש בגיל שישים ושבע." },
+      { id: "make-ends-meet", en: "Make ends meet", he: "לגמור את החודש", say: "מֵייק אֶנדְז מִיט", ex: "Many families struggle to make ends meet.", exHe: "משפחות רבות מתקשות לגמור את החודש." }
+    ]
+  },
+  {
+    id: "culture",
+    title: "תרבות ובידור",
+    subtitle: "סרטים, ספרים ותערוכות",
+    level: 4,
+    words: [
+      { id: "documentary", en: "Documentary", he: "סרט תיעודי", say: "דוֹקְיוּמֶנטֶרִי", ex: "We watched a documentary about the ocean.", exHe: "צפינו בסרט תיעודי על האוקיינוס." },
+      { id: "exhibition", en: "Exhibition", he: "תערוכה", say: "אֶקסִיבִּישֶן", ex: "There is a new exhibition at the museum.", exHe: "יש תערוכה חדשה במוזיאון." },
+      { id: "performance", en: "Performance", he: "הופעה, ביצוע", say: "פֶּרפוֹרמֶנס", ex: "The actor gave a great performance.", exHe: "השחקן נתן הופעה נהדרת." },
+      { id: "audience", en: "Audience", he: "קהל", say: "אוֹדִיאֶנס", ex: "The audience stood up and clapped.", exHe: "הקהל קם ומחא כפיים." },
+      { id: "plot", en: "Plot", he: "עלילה", say: "פְּלוֹט", ex: "The plot of the book was hard to follow.", exHe: "היה קשה לעקוב אחרי העלילה של הספר." },
+      { id: "review", en: "Review", he: "ביקורת (על סרט, ספר)", say: "רִיוְויוּ", ex: "I read a good review of the new play.", exHe: "קראתי ביקורת טובה על ההצגה החדשה." },
+      { id: "masterpiece", en: "Masterpiece", he: "יצירת מופת", say: "מַאסטֶרפִּיס", ex: "Many people think this film is a masterpiece.", exHe: "הרבה אנשים חושבים שהסרט הזה הוא יצירת מופת." },
+      { id: "sold-out", en: "Sold out", he: "אזלו הכרטיסים", say: "סוֹלד אַאוּט", ex: "The concert was sold out in one day.", exHe: "הכרטיסים להופעה אזלו ביום אחד." }
+    ]
+  },
+  {
+    id: "travel-advanced",
+    title: "טיולים מתקדם",
+    subtitle: "לתכנן טיול כמו מקצוען",
+    level: 4,
+    words: [
+      { id: "itinerary", en: "Itinerary", he: "מסלול הטיול, תוכנית נסיעה", say: "אַייטִינֶרֶרִי", ex: "The travel agent sent us the itinerary.", exHe: "סוכן הנסיעות שלח לנו את מסלול הטיול." },
+      { id: "accommodation", en: "Accommodation", he: "לינה, מקום מגורים", say: "אֶקוֹמוֹדֵיישֶן", ex: "The price includes flights and accommodation.", exHe: "המחיר כולל טיסות ולינה." },
+      { id: "sightseeing", en: "Sightseeing", he: "סיור באתרים", say: "סַייטסִיאִינג", ex: "We spent the morning sightseeing in Rome.", exHe: "בילינו את הבוקר בסיור באתרים ברומא." },
+      { id: "jet-lag", en: "Jet lag", he: "ג׳ט לג, עייפות מהפרש שעות", say: "ג'ֶט לֶג", ex: "I had terrible jet lag after the flight to New York.", exHe: "היה לי ג׳ט לג נוראי אחרי הטיסה לניו יורק." },
+      { id: "guided-tour", en: "Guided tour", he: "סיור מודרך", say: "גַיידֶד טוּר", ex: "We joined a guided tour of the old city.", exHe: "הצטרפנו לסיור מודרך בעיר העתיקה." },
+      { id: "travel-insurance", en: "Travel insurance", he: "ביטוח נסיעות", say: "טְרֶבֶל אִינשוּרֶנס", ex: "Don't forget to buy travel insurance.", exHe: "אל תשכח לקנות ביטוח נסיעות." },
+      { id: "off-the-beaten-track", en: "Off the beaten track", he: "הרחק מהמסלול המוכר", say: "אוֹף דֶ'ה בִּיטֶן טְרֶק", ex: "We found a small village off the beaten track.", exHe: "מצאנו כפר קטן הרחק מהמסלולים המוכרים." },
+      { id: "round-trip", en: "Round trip", he: "הלוך ושוב", say: "רַאוּנד טְרִיפּ", ex: "How much is a round trip ticket to Eilat?", exHe: "כמה עולה כרטיס הלוך ושוב לאילת?" }
+    ]
+  },
+  {
+    id: "discussion",
+    title: "לנהל דיון",
+    subtitle: "להגיב, להסכים ולהסתייג",
+    level: 4,
+    words: [
+      { id: "i-see-your-point", en: "I see your point", he: "אני מבין את הנקודה שלך", say: "אַיי סִי יוֹר פּוֹינט", ex: "I see your point, but I still think we should wait.", exHe: "אני מבין את הנקודה שלך, אבל אני עדיין חושב שכדאי לחכות." },
+      { id: "to-be-fair", en: "To be fair", he: "למען ההגינות, בהגינות", say: "טוּ בִּי פֶר", ex: "To be fair, he did try his best.", exHe: "למען ההגינות, הוא באמת עשה כמיטב יכולתו." },
+      { id: "having-said-that", en: "Having said that", he: "עם זאת, ולמרות זאת", say: "הֶבִינג סֶד דֶ'ט", ex: "The hotel was expensive. Having said that, it was worth it.", exHe: "המלון היה יקר. עם זאת, הוא היה שווה את זה." },
+      { id: "it-goes-without-saying", en: "It goes without saying", he: "מובן מאליו", say: "אִיט גוֹאוּז וִוידָ'אוּט סֵייאִינג", ex: "It goes without saying that family comes first.", exHe: "מובן מאליו שהמשפחה קודמת לכול." },
+      { id: "the-thing-is", en: "The thing is", he: "העניין הוא ש-", say: "דֶ'ה ת'ִינג אִיז", ex: "I'd love to come. The thing is, I don't drive at night.", exHe: "אשמח לבוא. העניין הוא שאני לא נוהג בלילה." },
+      { id: "as-a-matter-of-fact", en: "As a matter of fact", he: "למען האמת, בעצם", say: "אֶז אֶ מֶטֶר אוֹב פֶקט", ex: "As a matter of fact, I was born in that street.", exHe: "למען האמת, נולדתי ברחוב הזה." },
+      { id: "thats-beside-the-point", en: "That's beside the point", he: "זה לא העניין", say: "דֶ'טְס בִּיסַייד דֶ'ה פּוֹינט", ex: "Yes, it's cheap, but that's beside the point.", exHe: "כן, זה זול, אבל זה לא העניין." },
+      { id: "let-me-put-it-this-way", en: "Let me put it this way", he: "אנסח את זה כך", say: "לֶט מִי פּוּט אִיט דִ'יס וֵויי", ex: "Let me put it this way: I won't go there again.", exHe: "אנסח את זה כך: לא אלך לשם שוב." }
+    ]
+  },
+  {
+    id: "idioms-3",
+    title: "ניבים (ג)",
+    subtitle: "ביטויים צבעוניים",
+    level: 4,
+    words: [
+      { id: "hit-the-nail-on-the-head", en: "Hit the nail on the head", he: "לקלוע בדיוק לעניין", say: "הִיט דֶ'ה נֵייל אוֹן דֶ'ה הֶד", ex: "You hit the nail on the head with that comment.", exHe: "קלעת בדיוק לעניין עם ההערה הזו." },
+      { id: "the-ball-is-in-your-court", en: "The ball is in your court", he: "הכדור במגרש שלך", say: "דֶ'ה בּוֹל אִיז אִין יוֹר קוֹרט", ex: "I've made my offer. Now the ball is in your court.", exHe: "הצעתי את ההצעה שלי. עכשיו הכדור במגרש שלך." },
+      { id: "bite-off-more-than-you-can-chew", en: "Bite off more than you can chew", he: "לקחת על עצמך יותר מדי", say: "בַּייט אוֹף מוֹר דֶ'ן יוּ קֶן צ'וּ", ex: "Be careful not to bite off more than you can chew.", exHe: "תיזהר לא לקחת על עצמך יותר מדי." },
+      { id: "let-the-cat-out-of-the-bag", en: "Let the cat out of the bag", he: "לגלות סוד (בטעות)", say: "לֶט דֶ'ה קֶט אַאוּט אוֹב דֶ'ה בֶּג", ex: "Who let the cat out of the bag about the party?", exHe: "מי גילה את הסוד על המסיבה?" },
+      { id: "a-drop-in-the-ocean", en: "A drop in the ocean", he: "טיפה בים", say: "אֶ דְרוֹפּ אִין דִ'י אוֹשֶן", ex: "The donation was just a drop in the ocean.", exHe: "התרומה הייתה רק טיפה בים." },
+      { id: "beat-around-the-bush", en: "Beat around the bush", he: "לדבר מסביב, לא לגשת לעניין", say: "בִּיט אֶרַאוּנד דֶ'ה בּוּש", ex: "Please don't beat around the bush. Tell me the truth.", exHe: "בבקשה אל תדבר מסביב. תגיד לי את האמת." },
+      { id: "get-cold-feet", en: "Get cold feet", he: "להתחרט ברגע האחרון, לפחד", say: "גֶט קוֹלד פִיט", ex: "He wanted to sing, but he started to get cold feet.", exHe: "הוא רצה לשיר, אבל התחיל לפחד ברגע האחרון." },
+      { id: "every-cloud-has-a-silver-lining", en: "Every cloud has a silver lining", he: "בכל רע יש גם טוב", say: "אֶבְרִי קְלַאוּד הֶז אֶ סִילבֶר לַיינִינג", ex: "I missed the flight, but every cloud has a silver lining.", exHe: "פספסתי את הטיסה, אבל בכל רע יש גם טוב." }
+    ]
+  },
+  {
+    id: "complaints",
+    title: "תלונות ופתרון בעיות",
+    subtitle: "לעמוד על שלך, בנימוס",
+    level: 4,
+    words: [
+      { id: "theres-been-a-mistake", en: "There's been a mistake", he: "נפלה טעות", say: "דֶ'רְז בִּין אֶ מִיסְטֵייק", ex: "I'm afraid there's been a mistake with my bill.", exHe: "אני חושש שנפלה טעות בחשבון שלי." },
+      { id: "make-a-complaint", en: "Make a complaint", he: "להגיש תלונה", say: "מֵייק אֶ קוֹמפְּלֵיינט", ex: "I would like to make a complaint about the service.", exHe: "הייתי רוצה להגיש תלונה על השירות." },
+      { id: "its-not-what-i-ordered", en: "It's not what I ordered", he: "זה לא מה שהזמנתי", say: "אִיטס נוֹט וָוט אַיי אוֹרדֶרְד", ex: "Excuse me, it's not what I ordered.", exHe: "סליחה, זה לא מה שהזמנתי." },
+      { id: "id-appreciate-it-if", en: "I'd appreciate it if", he: "אודה לך אם", say: "אַייד אֶפּרִישִיאֵייט אִיט אִיף", ex: "I'd appreciate it if you could call me back today.", exHe: "אודה לך אם תוכל לחזור אליי היום." },
+      { id: "would-it-be-possible-to", en: "Would it be possible to", he: "האם אפשר ל-", say: "וּוּד אִיט בִּי פּוֹסִיבּל טוּ", ex: "Would it be possible to change my room?", exHe: "האם אפשר להחליף את החדר שלי?" },
+      { id: "sorry-to-bother-you", en: "Sorry to bother you", he: "סליחה על ההטרדה", say: "סוֹרִי טוּ בּוֹדֶ'ר יוּ", ex: "Sorry to bother you, but the heating isn't working.", exHe: "סליחה על ההטרדה, אבל החימום לא עובד." },
+      { id: "speak-to-the-manager", en: "Speak to the manager", he: "לדבר עם המנהל", say: "סְפִּיק טוּ דֶ'ה מֶנֶג'ֶר", ex: "Could I speak to the manager, please?", exHe: "אפשר לדבר עם המנהל, בבקשה?" },
+      { id: "out-of-order", en: "Out of order", he: "מקולקל, לא פועל", say: "אַאוּט אוֹב אוֹרדֶר", ex: "The lift is out of order again.", exHe: "המעלית שוב מקולקלת." }
+    ]
+  },
+
+  /* ---------- שלב ה׳ · דיוק וניסוח (C1) ---------- */
+  {
+    id: "formal-email",
+    title: "כותבים מייל רשמי",
+    subtitle: "פתיחות, בקשות וסיומות",
+    level: 5,
+    words: [
+      { id: "i-am-writing-to", en: "I am writing to", he: "אני כותב כדי ל-", say: "אַיי אֶם רַייטִינג טוּ", ex: "I am writing to ask about my order.", exHe: "אני כותב כדי לשאול על ההזמנה שלי." },
+      { id: "please-find-attached", en: "Please find attached", he: "מצורף בזה", say: "פְּלִיז פַיינד אֶטֶצ'ְט", ex: "Please find attached a copy of the receipt.", exHe: "מצורף בזה עותק של הקבלה." },
+      { id: "i-would-be-grateful-if", en: "I would be grateful if", he: "אהיה אסיר תודה אם", say: "אַיי וּוּד בִּי גְרֵייטפוּל אִיף", ex: "I would be grateful if you could reply soon.", exHe: "אהיה אסיר תודה אם תוכלו להשיב בקרוב." },
+      { id: "at-your-earliest-convenience", en: "At your earliest convenience", he: "בהקדם האפשרי מבחינתך", say: "אֶט יוֹר אֶרלִיאֶסט קוֹנוִינְיֶנס", ex: "Please contact me at your earliest convenience.", exHe: "אנא צרו איתי קשר בהקדם האפשרי." },
+      { id: "should-you-have-any-questions", en: "Should you have any questions", he: "אם יהיו לך שאלות", say: "שוּד יוּ הֶב אֶנִי קְוֶוסצ'ֶנְז", ex: "Should you have any questions, please let me know.", exHe: "אם יהיו לך שאלות, אנא עדכן אותי." },
+      { id: "i-look-forward-to-hearing-from-you", en: "I look forward to hearing from you", he: "אני מצפה לתשובתך", say: "אַיי לוּק פוֹרוֶורד טוּ הִירִינג פְרוֹם יוּ", ex: "Thank you for your help. I look forward to hearing from you.", exHe: "תודה על עזרתך. אני מצפה לתשובתך." },
+      { id: "kind-regards", en: "Kind regards", he: "בברכה", say: "קַיינד רִיגָארדְז", ex: "Kind regards, David Cohen", exHe: "בברכה, דוד כהן" },
+      { id: "further-to", en: "Further to", he: "בהמשך ל-", say: "פֶרדֶ'ר טוּ", ex: "Further to our phone call, here are the details.", exHe: "בהמשך לשיחת הטלפון שלנו, הנה הפרטים." }
+    ]
+  },
+  {
+    id: "linking-advanced",
+    title: "מילות קישור מתקדמות",
+    subtitle: "לכתוב כמו בעיתון",
+    level: 5,
+    words: [
+      { id: "nevertheless", en: "Nevertheless", he: "אף על פי כן", say: "נֶבֶרדֶ'לֶס", ex: "It was very cold. Nevertheless, we went swimming.", exHe: "היה קר מאוד. אף על פי כן, הלכנו לשחות." },
+      { id: "whereas", en: "Whereas", he: "בעוד ש-", say: "וֶורֶאֶז", ex: "My brother loves the city, whereas I prefer the countryside.", exHe: "אחי אוהב את העיר, בעוד שאני מעדיף את הכפר." },
+      { id: "furthermore", en: "Furthermore", he: "יתרה מזאת", say: "פֶרדֶ'רמוֹר", ex: "The flat is cheap. Furthermore, it is close to the sea.", exHe: "הדירה זולה. יתרה מזאת, היא קרובה לים." },
+      { id: "consequently", en: "Consequently", he: "כתוצאה מכך", say: "קוֹנסֶקְוֶונטְלִי", ex: "The road was closed. Consequently, we arrived late.", exHe: "הכביש היה סגור. כתוצאה מכך, הגענו באיחור." },
+      { id: "despite", en: "Despite", he: "למרות (+ שם עצם)", say: "דִיסְפַּייט", ex: "Despite the rain, the concert was wonderful.", exHe: "למרות הגשם, הקונצרט היה נפלא." },
+      { id: "provided-that", en: "Provided that", he: "בתנאי ש-", say: "פְּרוֹבַיידֶד דֶ'ט", ex: "I'll come, provided that the weather is good.", exHe: "אבוא, בתנאי שמזג האוויר יהיה טוב." },
+      { id: "unless", en: "Unless", he: "אלא אם כן", say: "אָנלֶס", ex: "We'll eat outside unless it rains.", exHe: "נאכל בחוץ אלא אם כן ירד גשם." },
+      { id: "in-addition", en: "In addition", he: "בנוסף", say: "אִין אֶדִישֶן", ex: "In addition, the price includes breakfast.", exHe: "בנוסף, המחיר כולל ארוחת בוקר." }
+    ]
+  },
+  {
+    id: "nuanced-adjectives",
+    title: "תארים מדויקים",
+    subtitle: "לתאר בדיוק את מה שמתכוונים",
+    level: 5,
+    words: [
+      { id: "thorough", en: "Thorough", he: "יסודי", say: "ת'ָארוֹ", ex: "The doctor did a thorough examination.", exHe: "הרופא ערך בדיקה יסודית." },
+      { id: "reluctant", en: "Reluctant", he: "מסתייג, לא להוט", say: "רִילָאקטֶנט", ex: "He was reluctant to sell his old car.", exHe: "הוא לא היה להוט למכור את המכונית הישנה שלו." },
+      { id: "vague", en: "Vague", he: "מעורפל, לא ברור", say: "וֵויג", ex: "His answer was very vague.", exHe: "התשובה שלו הייתה מעורפלת מאוד." },
+      { id: "subtle", en: "Subtle", he: "עדין, מעודן (לא בולט)", say: "סָאטֶל (בלי ב׳)", ex: "There is a subtle difference between the two words.", exHe: "יש הבדל עדין בין שתי המילים." },
+      { id: "inevitable", en: "Inevitable", he: "בלתי נמנע", say: "אִינֶבִיטֶבֶּל", ex: "Some changes are inevitable.", exHe: "שינויים מסוימים הם בלתי נמנעים." },
+      { id: "considerable", en: "Considerable", he: "ניכר, משמעותי", say: "קוֹנסִידֶרֶבֶּל", ex: "The repair cost a considerable amount of money.", exHe: "התיקון עלה סכום כסף ניכר." },
+      { id: "reasonable", en: "Reasonable", he: "סביר, הגיוני", say: "רִיזֶנֶבֶּל", ex: "The prices in this shop are reasonable.", exHe: "המחירים בחנות הזו סבירים." },
+      { id: "genuine", en: "Genuine", he: "אמיתי, כן", say: "ג'ֶנְיוּאִין", ex: "She showed genuine interest in my stories.", exHe: "היא גילתה עניין אמיתי בסיפורים שלי." }
+    ]
+  },
+  {
+    id: "advanced-verbs",
+    title: "פעלים מתקדמים",
+    subtitle: "לבטא את עצמך בדיוק",
+    level: 5,
+    words: [
+      { id: "acknowledge", en: "Acknowledge", he: "להכיר ב-, להודות ב-", say: "אֶקנוֹלֶג' (בלי ק׳ בהתחלה)", ex: "He refused to acknowledge his mistake.", exHe: "הוא סירב להודות בטעות שלו." },
+      { id: "emphasize", en: "Emphasize", he: "להדגיש", say: "אֶמפֶסַייז", ex: "I want to emphasize how important this is.", exHe: "אני רוצה להדגיש כמה זה חשוב." },
+      { id: "overcome", en: "Overcome", he: "להתגבר על", say: "אוֹבֶרקָאם", ex: "She managed to overcome many difficulties.", exHe: "היא הצליחה להתגבר על קשיים רבים." },
+      { id: "pursue", en: "Pursue", he: "לרדוף אחרי (מטרה), לעסוק ב-", say: "פֶּרסוּ", ex: "It's never too late to pursue your dreams.", exHe: "אף פעם לא מאוחר מדי לרדוף אחרי החלומות שלך." },
+      { id: "encourage", en: "Encourage", he: "לעודד", say: "אִינקָארֶג'", ex: "My teachers always encourage me to keep going.", exHe: "המורים שלי תמיד מעודדים אותי להמשיך." },
+      { id: "postpone", en: "Postpone", he: "לדחות (מועד)", say: "פּוֹסטְפּוֹאוּן", ex: "We had to postpone the meeting until next week.", exHe: "נאלצנו לדחות את הפגישה לשבוע הבא." },
+      { id: "cherish", en: "Cherish", he: "להוקיר, לשמור כאוצר", say: "צֶ'רִיש", ex: "I cherish every moment with my grandchildren.", exHe: "אני מוקיר כל רגע עם הנכדים שלי." },
+      { id: "reassure", en: "Reassure", he: "להרגיע, להפיג חשש", say: "רִיאֶשוּר", ex: "The nurse tried to reassure me.", exHe: "האחות ניסתה להרגיע אותי." }
+    ]
+  },
+  {
+    id: "phrasal-5",
+    title: "פעלים עם מילת יחס (ה)",
+    subtitle: "החיים, המשפחה והזמן",
+    level: 5,
+    words: [
+      { id: "brush-up-on", en: "Brush up on", he: "לרענן (ידע)", say: "בְּרָאש אָפּ אוֹן", ex: "I want to brush up on my English before the trip.", exHe: "אני רוצה לרענן את האנגלית שלי לפני הטיול." },
+      { id: "keep-up-with", en: "Keep up with", he: "לעמוד בקצב של, להתעדכן", say: "קִיפּ אָפּ וִוית'", ex: "It's hard to keep up with all the new technology.", exHe: "קשה לעמוד בקצב של כל הטכנולוגיה החדשה." },
+      { id: "look-back-on", en: "Look back on", he: "להביט לאחור על", say: "לוּק בֶּק אוֹן", ex: "I look back on those years with a smile.", exHe: "אני מביט לאחור על השנים ההן בחיוך." },
+      { id: "settle-down", en: "Settle down", he: "להשתקע; להירגע", say: "סֶטֶל דַאוּן", ex: "After the army, he decided to settle down in Haifa.", exHe: "אחרי הצבא, הוא החליט להשתקע בחיפה." },
+      { id: "take-after", en: "Take after", he: "להיות דומה ל- (קרוב משפחה)", say: "טֵייק אַפטֶר", ex: "My granddaughter seems to take after her grandmother.", exHe: "הנכדה שלי נראית דומה לסבתא שלה." },
+      { id: "get-by", en: "Get by", he: "להסתדר (במינימום)", say: "גֶט בַּאי", ex: "I know enough English to get by abroad.", exHe: "אני יודע מספיק אנגלית כדי להסתדר בחו״ל." },
+      { id: "make-up-for", en: "Make up for", he: "לפצות על", say: "מֵייק אָפּ פוֹר", ex: "Let's meet more often to make up for lost time.", exHe: "בוא ניפגש יותר כדי לפצות על הזמן האבוד." },
+      { id: "pass-away", en: "Pass away", he: "הלך לעולמו (נפטר)", say: "פֶּס אֶוֵויי", ex: "People pass away, but memories stay with us.", exHe: "אנשים הולכים לעולמם, אבל הזיכרונות נשארים איתנו." }
+    ]
+  },
+  {
+    id: "science-nature",
+    title: "מדע וסביבה",
+    subtitle: "לקרוא כתבה מדעית",
+    level: 5,
+    words: [
+      { id: "research", en: "Research", he: "מחקר", say: "רִיסֶרץ'", ex: "New research shows that walking is good for the brain.", exHe: "מחקר חדש מראה שהליכה טובה למוח." },
+      { id: "evidence", en: "Evidence", he: "ראיות, הוכחות", say: "אֶבִידֶנס", ex: "There is strong evidence for this theory.", exHe: "יש ראיות חזקות לתיאוריה הזו." },
+      { id: "discovery", en: "Discovery", he: "תגלית", say: "דִיסקָאבֶרִי", ex: "It was an important discovery in medicine.", exHe: "זו הייתה תגלית חשובה ברפואה." },
+      { id: "experiment", en: "Experiment", he: "ניסוי", say: "אִיקספֶּרִימֶנט", ex: "The scientists repeated the experiment many times.", exHe: "המדענים חזרו על הניסוי פעמים רבות." },
+      { id: "environment", en: "Environment", he: "סביבה (איכות הסביבה)", say: "אִינוַויירוֹנמֶנט", ex: "We must protect the environment for our grandchildren.", exHe: "אנחנו חייבים להגן על הסביבה למען הנכדים שלנו." },
+      { id: "climate-change", en: "Climate change", he: "שינוי אקלים", say: "קְלַיימֶט צֵ'יינג'", ex: "Climate change affects the whole world.", exHe: "שינוי האקלים משפיע על העולם כולו." },
+      { id: "species", en: "Species", he: "מין (בעלי חיים, צמחים)", say: "סְפִּישִיז", ex: "Many species of birds pass through Israel.", exHe: "מינים רבים של ציפורים עוברים דרך ישראל." },
+      { id: "renewable-energy", en: "Renewable energy", he: "אנרגיה מתחדשת", say: "רִינְיוּאֶבֶּל אֶנֶרג'ִי", ex: "Solar power is a kind of renewable energy.", exHe: "אנרגיה סולארית היא סוג של אנרגיה מתחדשת." }
+    ]
+  },
+  {
+    id: "looking-back",
+    title: "מביטים לאחור",
+    subtitle: "לספר את סיפור החיים",
+    level: 5,
+    words: [
+      { id: "looking-back", en: "Looking back", he: "במבט לאחור", say: "לוּקִינג בֶּק", ex: "Looking back, it was the best decision of my life.", exHe: "במבט לאחור, זו הייתה ההחלטה הכי טובה בחיי." },
+      { id: "in-those-days", en: "In those days", he: "באותם ימים", say: "אִין דֶ'וֹאוּז דֵייז", ex: "In those days, a bus ticket cost almost nothing.", exHe: "באותם ימים, כרטיס אוטובוס עלה כמעט כלום." },
+      { id: "ill-never-forget", en: "I'll never forget", he: "לעולם לא אשכח", say: "אַייל נֶבֶר פוֹרגֶט", ex: "I'll never forget the day we arrived in Israel.", exHe: "לעולם לא אשכח את היום שבו הגענו לישראל." },
+      { id: "it-reminds-me-of", en: "It reminds me of", he: "זה מזכיר לי את", say: "אִיט רִימַיינדְז מִי אוֹב", ex: "This song is lovely. It reminds me of my youth.", exHe: "השיר הזה מקסים. הוא מזכיר לי את הנעורים שלי." },
+      { id: "the-good-old-days", en: "The good old days", he: "הימים הטובים ההם", say: "דֶ'ה גוּד אוֹלד דֵייז", ex: "We often talk about the good old days.", exHe: "אנחנו מרבים לדבר על הימים הטובים ההם." },
+      { id: "times-have-changed", en: "Times have changed", he: "הזמנים השתנו", say: "טַיימְז הֶב צֵ'יינג'ד", ex: "Times have changed, but people are still the same.", exHe: "הזמנים השתנו, אבל האנשים עדיין אותם אנשים." },
+      { id: "over-the-years", en: "Over the years", he: "במהלך השנים", say: "אוֹבֶר דֶ'ה יִירְז", ex: "Over the years, we became close friends.", exHe: "במהלך השנים, נהיינו חברים קרובים." },
+      { id: "from-scratch", en: "From scratch", he: "מאפס, מההתחלה", say: "פְרוֹם סְקְרֶץ'", ex: "My parents built their life here from scratch.", exHe: "ההורים שלי בנו את חייהם כאן מאפס." }
+    ]
+  },
+  {
+    id: "hedging",
+    title: "לנסח בזהירות",
+    subtitle: "דעה מאוזנת ומנומסת",
+    level: 5,
+    words: [
+      { id: "it-seems-to-me", en: "It seems to me", he: "נראה לי ש-", say: "אִיט סִימְז טוּ מִי", ex: "It seems to me that the plan is too expensive.", exHe: "נראה לי שהתוכנית יקרה מדי." },
+      { id: "i-tend-to-think", en: "I tend to think", he: "אני נוטה לחשוב", say: "אַיי טֶנד טוּ ת'ִינק", ex: "I tend to think that simple food is the best.", exHe: "אני נוטה לחשוב שאוכל פשוט הוא הטוב ביותר." },
+      { id: "theres-no-doubt-that", en: "There's no doubt that", he: "אין ספק ש-", say: "דֶ'רְז נוֹאוּ דַאוּט דֶ'ט", ex: "There's no doubt that he is a talented musician.", exHe: "אין ספק שהוא מוזיקאי מוכשר." },
+      { id: "its-hard-to-say", en: "It's hard to say", he: "קשה לומר", say: "אִיטס הָארד טוּ סֵיי", ex: "It's hard to say who will win the election.", exHe: "קשה לומר מי ינצח בבחירות." },
+      { id: "to-some-extent", en: "To some extent", he: "במידה מסוימת", say: "טוּ סָאם אִיקסְטֶנט", ex: "I agree with you to some extent.", exHe: "אני מסכים איתך במידה מסוימת." },
+      { id: "on-the-whole", en: "On the whole", he: "בסך הכול, באופן כללי", say: "אוֹן דֶ'ה הוֹאוּל", ex: "On the whole, the trip was a great success.", exHe: "בסך הכול, הטיול היה הצלחה גדולה." },
+      { id: "arguably", en: "Arguably", he: "אפשר לטעון ש-", say: "אָרגְיוּאֶבְּלִי", ex: "This is arguably the best restaurant in town.", exHe: "אפשר לטעון שזו המסעדה הטובה ביותר בעיר." },
+      { id: "im-inclined-to-agree", en: "I'm inclined to agree", he: "אני נוטה להסכים", say: "אַיים אִינקְלַיינְד טוּ אֶגְרִי", ex: "After hearing both sides, I'm inclined to agree with you.", exHe: "אחרי ששמעתי את שני הצדדים, אני נוטה להסכים איתך." }
+    ]
+  },
+  {
+    id: "regrets-wishes",
+    title: "משאלות וחרטות",
+    subtitle: "wish, should have, if only",
+    level: 5,
+    words: [
+      { id: "i-wish-i-had", en: "I wish I had", he: "הלוואי שהיה לי / שהייתי", say: "אַיי וִויש אַיי הֶד", ex: "I wish I had more time to read.", exHe: "הלוואי שהיה לי יותר זמן לקרוא." },
+      { id: "if-only", en: "If only", he: "אילו רק, הלוואי", say: "אִיף אוֹנְלִי", ex: "If only I could speak English like my grandson!", exHe: "אילו רק יכולתי לדבר אנגלית כמו הנכד שלי!" },
+      { id: "i-should-have", en: "I should have", he: "הייתי צריך ל- (ולא עשיתי)", say: "אַיי שוּד הֶב", ex: "I should have called you yesterday.", exHe: "הייתי צריך להתקשר אליך אתמול." },
+      { id: "i-could-have", en: "I could have", he: "יכולתי ל- (אבל לא)", say: "אַיי קוּד הֶב", ex: "I could have taken the earlier train.", exHe: "יכולתי לנסוע ברכבת המוקדמת יותר." },
+      { id: "id-rather-you", en: "I'd rather you", he: "אני מעדיף שאתה", say: "אַייד רָאדֶ'ר יוּ", ex: "I'd rather you didn't drive in this weather.", exHe: "אני מעדיף שלא תנהג במזג האוויר הזה." },
+      { id: "its-high-time", en: "It's high time", he: "הגיע הזמן (ואף מאוחר)", say: "אִיטס הַאי טַיים", ex: "It's high time we visited your sister.", exHe: "הגיע הזמן שנבקר את אחותך." },
+      { id: "had-i-known", en: "Had I known", he: "אילו ידעתי", say: "הֶד אַיי נוֹאוּן", ex: "Had I known you were coming, I would have baked a cake.", exHe: "אילו ידעתי שאתה בא, הייתי אופה עוגה." },
+      { id: "its-no-use", en: "It's no use", he: "אין טעם", say: "אִיטס נוֹאוּ יוּס", ex: "It's no use crying over spilled milk.", exHe: "אין טעם לבכות על חלב שנשפך." }
+    ]
+  },
+  {
+    id: "idioms-4",
+    title: "ניבים (ד)",
+    subtitle: "לדבר כמו יליד",
+    level: 5,
+    words: [
+      { id: "a-piece-of-advice", en: "A piece of advice", he: "עצה (אחת)", say: "אֶ פִּיס אוֹב אֶדְוַויס", ex: "Let me give you a piece of advice.", exHe: "תן לי לתת לך עצה." },
+      { id: "keep-your-chin-up", en: "Keep your chin up", he: "תחזיק מעמד, אל תתייאש", say: "קִיפּ יוֹר צִ'ין אָפּ", ex: "Keep your chin up. Things will get better.", exHe: "אל תתייאש. הדברים ישתפרו." },
+      { id: "learn-the-ropes", en: "Learn the ropes", he: "ללמוד את רזי העניין", say: "לֶרן דֶ'ה רוֹאוּפְּס", ex: "It takes a few weeks to learn the ropes.", exHe: "לוקח כמה שבועות ללמוד את רזי העניין." },
+      { id: "on-the-same-page", en: "On the same page", he: "תמימי דעים, מתואמים", say: "אוֹן דֶ'ה סֵיים פֵּייג'", ex: "Let's make sure we are on the same page.", exHe: "בוא נוודא שאנחנו מתואמים." },
+      { id: "sleep-on-it", en: "Sleep on it", he: "לחשוב על זה עד מחר", say: "סְלִיפּ אוֹן אִיט", ex: "Don't decide now. Sleep on it.", exHe: "אל תחליט עכשיו. תחשוב על זה עד מחר." },
+      { id: "a-small-world", en: "It's a small world", he: "העולם קטן", say: "אִיטס אֶ סְמוֹל וֶורלד", ex: "You know my cousin? It's a small world!", exHe: "אתה מכיר את בן הדוד שלי? העולם קטן!" },
+      { id: "the-last-straw", en: "The last straw", he: "הקש ששבר את גב הגמל", say: "דֶ'ה לַאסט סְטְרוֹ", ex: "The late train was the last straw.", exHe: "הרכבת המאחרת הייתה הקש ששבר את גב הגמל." },
+      { id: "time-flies", en: "Time flies", he: "הזמן טס", say: "טַיים פְלַייז", ex: "Time flies when you're having fun.", exHe: "הזמן טס כשנהנים." }
+    ]
   }
 ];
 
@@ -616,5 +940,169 @@ window.DIALOGUES = [
       { who: "you", en: "Perfect. Would you mind picking me up at ten?", he: "מושלם. אכפת לך לאסוף אותי בעשר?" },
       { who: "app", en: "No problem at all. See you on Saturday!", he: "אין שום בעיה. נתראה בשבת!" }
     ]
+  },
+  {
+    id: "hotel-complaint",
+    title: "תלונה בקבלה של המלון",
+    subtitle: "רמה מתקדמת · לעמוד על שלך בנימוס",
+    lines: [
+      { who: "you", en: "Sorry to bother you, but I'm afraid there's a problem with my room.", he: "סליחה על ההטרדה, אבל אני חושש שיש בעיה בחדר שלי." },
+      { who: "app", en: "I'm sorry to hear that. What seems to be the problem?", he: "צר לי לשמוע. מה הבעיה?" },
+      { who: "you", en: "The air conditioner is out of order, and the room is very hot.", he: "המזגן מקולקל, והחדר חם מאוד." },
+      { who: "app", en: "I apologize. I'll send someone to look into it right away.", he: "אני מתנצל. אשלח מישהו לבדוק את זה מיד." },
+      { who: "you", en: "Thank you. Would it be possible to change rooms if it can't be fixed tonight?", he: "תודה. האם אפשר להחליף חדר אם אי אפשר לתקן את זה הלילה?" },
+      { who: "app", en: "Of course. And to make up for it, breakfast tomorrow is on us.", he: "כמובן. וכדי לפצות על כך, ארוחת הבוקר מחר על חשבוננו." },
+      { who: "you", en: "That's very kind of you. I appreciate it.", he: "זה מאוד נחמד מצדך. אני מעריך את זה." }
+    ]
+  },
+  {
+    id: "film-discussion",
+    title: "מדברים על סרט",
+    subtitle: "רמה מתקדמת · להביע דעה",
+    lines: [
+      { who: "app", en: "So, what did you think of the film?", he: "נו, מה חשבת על הסרט?" },
+      { who: "you", en: "On the whole, I enjoyed it, although the plot was a bit slow.", he: "בסך הכול נהניתי, אם כי העלילה הייתה קצת איטית." },
+      { who: "app", en: "Really? I thought it was a masterpiece.", he: "באמת? אני חשבתי שזו יצירת מופת." },
+      { who: "you", en: "I see your point. The actors were excellent, there's no doubt about that.", he: "אני מבין את הנקודה שלך. השחקנים היו מצוינים, אין ספק בזה." },
+      { who: "app", en: "And the ending? Did you expect it?", he: "והסוף? ציפית לו?" },
+      { who: "you", en: "To be honest, it took me completely by surprise.", he: "האמת, הוא הפתיע אותי לגמרי." },
+      { who: "app", en: "Same here. Let's go to another film next week.", he: "גם אותי. בוא נלך לעוד סרט בשבוע הבא." },
+      { who: "you", en: "Sounds good, as long as it's not too long!", he: "נשמע טוב, כל עוד הוא לא ארוך מדי!" }
+    ]
+  },
+  {
+    id: "travel-agent",
+    title: "אצל סוכן הנסיעות",
+    subtitle: "רמה מתקדמת · מתכננים טיול לחו״ל",
+    lines: [
+      { who: "app", en: "Good morning. How can I help you plan your trip?", he: "בוקר טוב. איך אוכל לעזור לך לתכנן את הטיול?" },
+      { who: "you", en: "My wife and I would like to spend ten days in Italy in the spring.", he: "אשתי ואני רוצים לבלות עשרה ימים באיטליה באביב." },
+      { who: "app", en: "Wonderful. Do you prefer guided tours, or travelling on your own?", he: "נהדר. אתם מעדיפים סיורים מודרכים, או לטייל לבד?" },
+      { who: "you", en: "A bit of both. We'd also like to see some places off the beaten track.", he: "קצת מזה וקצת מזה. נרצה גם לראות כמה מקומות הרחק מהמסלול המוכר." },
+      { who: "app", en: "I'll prepare an itinerary with flights and accommodation. What is your budget?", he: "אכין מסלול עם טיסות ולינה. מה התקציב שלכם?" },
+      { who: "you", en: "It depends, but we'd rather not spend more than fifteen thousand shekels.", he: "זה תלוי, אבל נעדיף לא להוציא יותר מחמישה עשר אלף שקל." },
+      { who: "app", en: "That's reasonable. I'll send you the details by email.", he: "זה סביר. אשלח לך את הפרטים במייל." },
+      { who: "you", en: "Great. Please don't forget to include travel insurance.", he: "מצוין. בבקשה אל תשכח לכלול ביטוח נסיעות." }
+    ]
+  },
+  {
+    id: "old-days",
+    title: "שיחה על פעם",
+    subtitle: "רמה מתקדמת · מביטים לאחור עם חבר",
+    lines: [
+      { who: "app", en: "Do you remember when we used to play football in the street?", he: "אתה זוכר כששיחקנו כדורגל ברחוב?" },
+      { who: "you", en: "Of course! I'll never forget the day we broke Mrs. Levy's window.", he: "בטח! לעולם לא אשכח את היום ששברנו את החלון של גברת לוי." },
+      { who: "app", en: "Ha! Looking back, we were lucky she didn't tell our parents.", he: "הא! במבט לאחור, היה לנו מזל שהיא לא סיפרה להורים שלנו." },
+      { who: "you", en: "Times have changed. Nowadays children play on their phones.", he: "הזמנים השתנו. בימינו ילדים משחקים בטלפונים." },
+      { who: "app", en: "That's true. Do you ever miss the good old days?", he: "זה נכון. אתה מתגעגע לפעמים לימים הטובים ההם?" },
+      { who: "you", en: "Sometimes. But I cherish what we have today, especially the grandchildren.", he: "לפעמים. אבל אני מוקיר את מה שיש לנו היום, במיוחד את הנכדים." },
+      { who: "app", en: "Well said. Time flies, doesn't it?", he: "יפה אמרת. הזמן טס, נכון?" }
+    ]
+  },
+  {
+    id: "insurance-call",
+    title: "שיחה עם חברת הביטוח",
+    subtitle: "רמה מתקדמת · פתרון בעיה בטלפון",
+    lines: [
+      { who: "app", en: "Good afternoon, you've reached customer service. How may I help you?", he: "צהריים טובים, הגעת לשירות הלקוחות. במה אוכל לעזור?" },
+      { who: "you", en: "Hello. I sent you a claim a month ago, and I haven't heard back yet.", he: "שלום. שלחתי אליכם תביעה לפני חודש, ועדיין לא קיבלתי תשובה." },
+      { who: "app", en: "I'm sorry about the delay. Could you give me your policy number?", he: "אני מצטער על העיכוב. תוכל לתת לי את מספר הפוליסה שלך?" },
+      { who: "you", en: "Yes, just a moment. Hold on, I'll get my glasses.", he: "כן, רק רגע. חכה, אביא את המשקפיים שלי." },
+      { who: "app", en: "Take your time.", he: "קח את הזמן." },
+      { who: "you", en: "Here it is. I'd appreciate it if you could look into it today.", he: "הנה הוא. אודה לך אם תוכל לבדוק את זה היום." },
+      { who: "app", en: "I can see your claim. It was approved, and the money will arrive within five working days.", he: "אני רואה את התביעה שלך. היא אושרה, והכסף יגיע תוך חמישה ימי עבודה." },
+      { who: "you", en: "What a relief! Thank you for your help.", he: "איזו הקלה! תודה על העזרה." }
+    ]
+  }
+];
+
+/*
+ * נושאים לכתיבה חופשית (מסך "כותבים").
+ * לכל נושא: הוראה בעברית, שאלה באנגלית, משפטי פתיחה, וביטויים שיכולים לעזור.
+ */
+window.WRITING_PROMPTS = [
+  {
+    id: "my-day", title: "היום שלי", level: 1,
+    he: "ספרו בשלושה–ארבעה משפטים מה עשיתם היום.",
+    en: "What did you do today?",
+    starters: ["This morning, I", "In the afternoon, I", "Later on, I"],
+    phrases: ["I woke up at", "I had breakfast", "I went to", "I met", "After that", "In the end"]
+  },
+  {
+    id: "message-grandchild", title: "הודעה לנכד או לנכדה", level: 1,
+    he: "כתבו הודעה קצרה ושמחה לנכד או לנכדה.",
+    en: "Write a short message to your grandchild.",
+    starters: ["Hi sweetheart,", "I hope you are well.", "Love, Grandpa"],
+    phrases: ["I miss you", "How have you been?", "I'm proud of you", "I look forward to seeing you", "Let's meet soon", "Keep in touch"]
+  },
+  {
+    id: "introduce-myself", title: "להציג את עצמי", level: 1,
+    he: "כתבו כמה משפטים על עצמכם: מאיפה אתם, מה עשיתם בחיים, מה אתם אוהבים.",
+    en: "Tell me about yourself.",
+    starters: ["My name is", "I was born in", "I used to work as"],
+    phrases: ["I grew up in", "I have ... grandchildren", "In my free time, I", "I really enjoy", "I'm interested in"]
+  },
+  {
+    id: "my-neighborhood", title: "השכונה שלי", level: 2,
+    he: "תארו את השכונה או העיר שבה אתם גרים.",
+    en: "Describe your neighborhood.",
+    starters: ["I live in", "My neighborhood is", "There is a"],
+    phrases: ["It's a quiet neighborhood", "close to", "My neighbors are", "I like to walk to", "The best thing about it is"]
+  },
+  {
+    id: "favorite-food", title: "האוכל שאני אוהב", level: 2,
+    he: "כתבו על מאכל שאתם אוהבים, ומי הכין אותו.",
+    en: "What is your favorite dish, and why?",
+    starters: ["My favorite dish is", "My mother used to make", "It reminds me of"],
+    phrases: ["It tastes like", "on Friday evenings", "the whole family", "with fresh bread", "It smells wonderful"]
+  },
+  {
+    id: "dream-trip", title: "הטיול שאני חולם עליו", level: 3,
+    he: "לאן הייתם רוצים לטוס, ולמה?",
+    en: "Where would you like to travel, and why?",
+    starters: ["I would love to visit", "I have always wanted to see", "If I could, I would"],
+    phrases: ["for a week", "guided tour", "I'd rather", "It depends on the weather", "the old city", "beautiful views"]
+  },
+  {
+    id: "childhood-memory", title: "זיכרון מהילדות", level: 3,
+    he: "ספרו על זיכרון אחד מהילדות שאתם אוהבים.",
+    en: "Tell a story from your childhood.",
+    starters: ["When I was a child,", "I'll never forget", "Back then,"],
+    phrases: ["We used to", "In those days", "Suddenly", "It turned out that", "Looking back"]
+  },
+  {
+    id: "opinion-phones", title: "מה דעתך: טלפונים חכמים", level: 4,
+    he: "האם הטלפונים החכמים שיפרו את החיים? כתבו את דעתכם, עם נימוק אחד בעד ואחד נגד.",
+    en: "Have smartphones made our lives better?",
+    starters: ["In my opinion,", "On the one hand,", "On the other hand,"],
+    phrases: ["To be honest", "I see the point", "Having said that", "keep in touch with family", "It's hard to keep up with", "On the whole"]
+  },
+  {
+    id: "complaint-email", title: "מייל תלונה", level: 4,
+    he: "כתבו מייל מנומס לחנות: הזמנתם משהו והגיע מוצר פגום.",
+    en: "Write a polite complaint email to a shop.",
+    starters: ["Dear Sir or Madam,", "I am writing to", "Kind regards,"],
+    phrases: ["I ordered", "Unfortunately", "it arrived damaged", "I would be grateful if", "a refund", "Please find attached"]
+  },
+  {
+    id: "advice-young", title: "עצה לדור הצעיר", level: 5,
+    he: "איזו עצה הייתם נותנים לאדם צעיר? הסבירו למה.",
+    en: "What advice would you give to a young person?",
+    starters: ["If I were you,", "Let me give you a piece of advice:", "Looking back,"],
+    phrases: ["It's never too late", "Don't give up", "I wish I had", "I should have", "family comes first", "Time flies"]
+  },
+  {
+    id: "life-lesson", title: "שיעור שלמדתי בחיים", level: 5,
+    he: "ספרו על רגע או החלטה שלימדו אתכם משהו חשוב.",
+    en: "Describe an experience that taught you something important.",
+    starters: ["Many years ago,", "At first,", "In the end, I realized that"],
+    phrases: ["It turned out", "I learned that", "Had I known", "over the years", "I'm grateful for", "every cloud has a silver lining"]
+  },
+  {
+    id: "news-today", title: "מה קרה בחדשות", level: 5,
+    he: "בחרו ידיעה מהחדשות האחרונות וכתבו עליה ועל דעתכם.",
+    en: "Write about something you heard in the news.",
+    starters: ["Yesterday I read that", "According to the news,", "It seems to me that"],
+    phrases: ["The government announced", "prices are going up", "There's no doubt that", "To some extent", "I tend to think"]
   }
 ];

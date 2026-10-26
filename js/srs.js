@@ -14,6 +14,18 @@
     lesson.words.forEach((w) => { wordIndex[w.id] = Object.assign({ lessonId: lesson.id, lessonIndex: li }, w); });
   });
 
+  /*
+   * "המילים שלי" — ביטויים שהמשתמש שמר מהמתרגם. נכנסים לחזרות כמו כל מילה,
+   * אבל אין להם משפט דוגמה, ולכן הם מופיעים רק בתרגולים של מילים בודדות.
+   */
+  function registerCustom() {
+    Object.keys(wordIndex).forEach((id) => { if (wordIndex[id].custom) delete wordIndex[id]; });
+    (Store.state.custom || []).forEach((c) => {
+      wordIndex[c.id] = { id: c.id, en: c.en, he: c.he, say: "", lessonId: "mine", lessonIndex: -1, custom: true };
+    });
+  }
+  registerCustom();
+
   function rec(id) { return Store.state.words[id]; }
 
   function introduce(id) {
@@ -89,5 +101,5 @@
     return a;
   }
 
-  window.SRS = { wordIndex, introduce, answer, knownIds, dueIds, pickSession, stats, shuffle, rec };
+  window.SRS = { wordIndex, introduce, answer, knownIds, dueIds, pickSession, stats, shuffle, rec, registerCustom };
 })();
